@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Cpu, Settings, Gauge, Wrench, MonitorDot, Cable } from "lucide-react";
+import { Cpu, Settings, Gauge, Wrench, MonitorDot, Cable, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -37,16 +37,20 @@ const services = [
 const ServicesSection = () => {
   return (
     <section id="servicios" className="section-padding bg-background">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         <span className="label-tag">Servicios</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Qué hacemos
-        </h2>
-        <p className="text-muted-foreground max-w-xl mb-12">
-          Soluciones técnicas concretas para automatización, control e instrumentación industrial.
-        </p>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-14">
+          <div>
+            <h2 className="text-3xl md:text-4xl lg:text-[42px] font-extrabold text-foreground leading-tight">
+              Qué hacemos
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-xl text-lg">
+              Soluciones técnicas concretas para automatización, control e instrumentación industrial.
+            </p>
+          </div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -54,11 +58,14 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="group p-6 border border-border rounded-sm bg-card hover:border-accent/40 transition-colors"
+              className="group bg-background p-8 hover:bg-secondary/50 transition-colors cursor-default"
             >
-              <service.icon className="w-8 h-8 text-accent mb-4" strokeWidth={1.5} />
-              <h3 className="text-lg font-semibold text-card-foreground mb-2">{service.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
+              <service.icon className="w-10 h-10 text-primary mb-5" strokeWidth={1.2} />
+              <h3 className="text-lg font-bold text-foreground mb-3">{service.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{service.desc}</p>
+              <span className="inline-flex items-center text-primary text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                Más info <ArrowRight size={14} className="ml-1" />
+              </span>
             </motion.div>
           ))}
         </div>

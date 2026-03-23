@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
@@ -29,15 +30,19 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="proyectos" className="section-padding section-dark">
-      <div className="max-w-7xl mx-auto">
-        <span className="label-tag">Proyectos</span>
-        <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-          Trabajos realizados
-        </h2>
-        <p className="text-surface-dark-foreground max-w-xl mb-12">
-          Algunos ejemplos representativos de proyectos ejecutados en distintas industrias.
-        </p>
+    <section id="proyectos" className="section-padding bg-surface-dark">
+      <div className="max-w-[1400px] mx-auto">
+        <span className="label-tag !text-primary">Proyectos</span>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-14">
+          <div>
+            <h2 className="text-3xl md:text-4xl lg:text-[42px] font-extrabold text-white leading-tight">
+              Trabajos realizados
+            </h2>
+            <p className="text-white/50 mt-4 max-w-xl text-lg">
+              Algunos ejemplos representativos de proyectos ejecutados en distintas industrias.
+            </p>
+          </div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
@@ -47,16 +52,20 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="border border-border/10 rounded-sm p-6 bg-surface-steel/50"
+              className="group border border-white/10 p-8 bg-surface-steel/40 hover:border-primary/40 transition-all"
             >
-              <div className="font-mono text-xs text-muted-foreground mb-2 uppercase">{project.client}</div>
-              <h3 className="text-lg font-semibold text-primary-foreground mb-2">{project.title}</h3>
-              <p className="text-sm text-surface-dark-foreground leading-relaxed mb-4">{project.scope}</p>
+              <div className="text-xs font-semibold tracking-[0.15em] uppercase text-white/40 mb-3">
+                {project.client}
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-sm text-white/60 leading-relaxed mb-5">{project.scope}</p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-xs px-2 py-1 rounded-sm bg-accent/10 text-accent border border-accent/20"
+                    className="text-xs font-medium px-3 py-1 bg-primary/10 text-primary border border-primary/20"
                   >
                     {tag}
                   </span>
